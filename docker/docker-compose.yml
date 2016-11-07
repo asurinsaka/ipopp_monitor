@@ -1,0 +1,17 @@
+version: '2'
+services:
+  backend:
+    image: backend
+    depends_on:
+      - ipopp_db
+  ipopp_db:
+    image: ipopp_db
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+      - MYSQL_DATABASE=DSM
+    ports:
+      - 3306:3306
+    volumes:
+      - backend:/root/backend
+volumes:
+  backend:
